@@ -1,0 +1,16 @@
+apiVersion: skaffold/v2beta22
+kind: Config
+metadata:
+  name: go-wiki
+build:
+  artifacts:
+    - image: go-wiki
+      docker:
+        dockerfile: Dockerfile
+  tagPolicy:
+    sha256: {}
+deploy:
+  kubectl:
+    manifests:
+      - kubernetes-manifests/wiki.deployment.yaml
+      - kubernetes-manifests/wiki.service.yaml

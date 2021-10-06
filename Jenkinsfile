@@ -9,9 +9,11 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building..'
+        script {
+          dockerImage = docker.build goapp:v1
+        }
       }
     }
-
     stage('Test') {
       steps {
         echo 'Testing..'
